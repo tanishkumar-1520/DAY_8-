@@ -1,4 +1,30 @@
-@import url('https://googleapis.com');
+/* =========================================
+   Global Variables & Reset
+   ========================================= */
+:root {
+    /* Primary Colors (Professional Blue) */
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #dbeafe;
+    
+    /* Neutral Shades */
+    --bg-color: #f1f5f9;
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e2e8f0;
+    
+    /* Accent & Semantic Colors */
+    --accent-color: #0ea5e9;
+    --danger: #ef4444;
+    --danger-dark: #dc2626;
+    --success: #10b981;
+    
+    /* Layout */
+    --border-radius: 12px;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+}
 
 * {
     margin: 0;
@@ -8,122 +34,269 @@
 }
 
 body {
-    background: #f4f7fa;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-main);
     padding: 20px;
-    display: flex;
-    justify-content: center;
+    line-height: 1.5;
 }
 
 .container {
     width: 100%;
-    max-width: 1100px;
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-h2 {
-    color: #1e3a8a;
-    text-align: center;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #3b82f6;
-    padding-bottom: 10px;
+/* =========================================
+   Header Styling
+   ========================================= */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 20px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
 }
 
-h3 {
-    margin-bottom: 15px;
-    color: #1f2937;
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
+.logo-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    background: var(--primary-light);
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.main-header h2 {
+    color: var(--primary-dark);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.user-info i {
+    font-size: 2.2rem;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   Dashboard Grid & Cards
+   ========================================= */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-card, .table-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.form-card:hover, .table-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.card-header {
+    background: #fafafa;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-header i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* =========================================
+   Form Styling
+   ========================================= */
+form {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-.form-container {
-    background: #f8fafc;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-    height: fit-content;
-}
-
-form {
+.input-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+}
+
+.input-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.input-group label i {
+    color: var(--primary-color);
+    width: 16px;
 }
 
 input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    background-color: #fdfdfd;
 }
 
 input:focus {
     outline: none;
-    border-color: #3b82f6;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
 }
 
-button {
-    background: #2563eb;
+/* Professional Input placeholders */
+input::placeholder {
+    color: #cbd5e1;
+}
+
+.btn-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-color);
     color: white;
-    padding: 10px;
+    padding: 14px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+    margin-top: 10px;
 }
 
-button:hover {
-    background: #1d4ed8;
+.btn-submit:hover {
+    background: var(--primary-dark);
 }
 
-.btn-delete {
-    background: #ef4444;
-    padding: 5px 10px;
-    font-size: 12px;
-}
-
-.btn-delete:hover {
-    background: #dc2626;
+/* =========================================
+   Table Styling (Modern Look)
+   ========================================= */
+.list-section {
+    width: 100%;
+    overflow: hidden; /* Ensures table stays within card */
 }
 
 .table-wrapper {
-    overflow-x: auto;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    overflow-x: auto; /* Handle narrow screens */
+    padding: 0 10px 10px 10px; /* Slight padding around table */
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     text-align: left;
-    min-width: 500px;
-}
-
-th,
-td {
-    padding: 12px;
-    font-size: 14px;
-    border-bottom: 1px solid #e2e8f0;
+    min-width: 700px;
 }
 
 th {
-    background: #f1f5f9;
-    color: #475569;
+    padding: 18px 15px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: #fafafa;
+    border-bottom: 2px solid var(--border-color);
 }
 
-tr:hover {
-    background: #f8fafc;
+td {
+    padding: 16px 15px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
 }
 
-@media (max-width: 800px) {
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
+/* Patient Name specific style */
+tbody tr td:nth-child(2) {
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+/* ID & Date columns are muted */
+tbody tr td:nth-child(1),
+tbody tr td:nth-child(5) {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-family: 'Courier New', monospace;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover td {
+    background-color: var(--primary-light);
+}
+
+/* Delete Button */
+.btn-delete {
+    background: transparent;
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-delete:hover {
+    background: var(--danger);
+    color: white;
 }
