@@ -1,4 +1,4 @@
-**Project Overview******
+# Project Overview
 
 
 This is a Hospital Management System web application designed to digitize and manage patient registration and medical records smoothly. It provides a simple, clean, and responsive user interface where hospital staff can add new patient logs, view existing records in real-time, and delete entries as needed without any manual page reloads.  
@@ -85,6 +85,27 @@ b) Upon confirmation, a DELETE request is sent to the backend endpoint /books/:i
 
 
 c) The record is completely filtered out and removed from patients.json, an alert reads "Deleted!", and the user interface table is immediately refreshed to show the updated current data. (Note: The text log file safely retains the chronological entry history).  
+
+
+
+#Open Terminal :
+
+
+## Step 1 :
+
+```
+npm init -y
+```
+
+## Step 2 :
+
+-install package :
+
+```
+npm install express cors
+```
+
+
 
 
 __________________________________________________________________________________________________________________________________________
